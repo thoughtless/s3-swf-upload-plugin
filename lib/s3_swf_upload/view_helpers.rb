@@ -24,7 +24,7 @@ module S3SwfUpload
       out = ""
 
       if !@include_s3_upload
-        out << '<script type="text/javascript" src="/javascripts/s3_upload.js"></script>' 
+        out << javascript_include_tag('s3_upload') 
         @include_s3_upload = true
       end
 
@@ -38,12 +38,12 @@ module S3SwfUpload
               onSuccess: function(filename, filesize, contenttype){
                 #{success}
               },
-              onFailed: function(status){
+              onFailed: function(result_status){
                 #{failed}
               },
               onFileSelected: function(filename, size, contenttype){
                 #{selected}
-              },
+              }
             });
         </script>
 
